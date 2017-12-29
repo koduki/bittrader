@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+        <!--ここにHTMLを記載する-->
+
+        Hello
+        <div class="js-component11">
+            <ul>
+                <li v-for="(item, index) in data">
+                    {{ index + 1 }} - {{ item }}
+                </li>
+            </ul>
+        </div>
+        <div class="js-component08">
+            <p>税抜価格 ： <input v-model="origin" type="number"></p>
+            <p>税込価格 ： <input v-model="withTax" type="number"></p>
+        </div>
+
+        <div class="js-component06">
+            <p><input v-model="text" type="text"></p>
+            <p>ここに入力文字列の大文字を表示します ： {{ text | toUpperCase }}</p>
+        </div>
+
+        <div class="js-component01">
+            <p>mustache構文の出力を表示します ： {{ text }}</p>
+            <p>v-textの出力を表示します ： <span v-text="text"></span></p>
+        </div>
+
+        <div class="js-component02">
+            <p><input v-model="text2" type="text"></p>
+            <p>ここに入力文字列を表示します ： {{ text2 }}</p>
+        </div>
+
+        <div class="js-component03">
+            <p><input v-model="input" type="text"></p>
+            <p v-on:click="output">入力文字列を反映</p>
+            <p>ここに入力文字列を表示します ： {{ text }}</p>
+        </div>
+         
+        <div class="js-component04">
+            <p class="mb10"><input v-model="input" type="text"></p>
+            <p v-on:click="output" class="button mb10">入力文字列を反映</p>
+            <div>ここにHTMLコードを表示します ： {{ html }}</div>
+            <div>ここにHTML出力を表示します ： <span v-html="html"></span></div>
+        </div>
+
+        <div class="js-component05">
+            <p><input v-model="number" type="number"></p>
+            <p>ここに2倍の数字を表示します ： {{ number * 2 }}</p>
+        </div>
+
+        <script src="vue.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html> 

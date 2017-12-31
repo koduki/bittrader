@@ -33,7 +33,7 @@
                         <tbody>
                             <tr><th>許容損失(JPY)</th><td><input type="number" name="pnl_limit" v-model="pnl_limit" /></td></tr>
                             <tr><th>目標利益(JPY)</th><td><input type="number" name="target_profit" v-model="target_profit" /></td></tr>
-                            <tr><th>コイン数</th><td><input type="number" name="size" v-model="size" /></td></tr>
+                            <tr><th>コイン数</th><td><input type="number" name="size" step="0.001" v-model="size" /></td></tr>
                             <tr><th>ASK(買)</th><td><input type="number" name="buy_coinprice" v-model="buy_coinprice" /></td></tr>
                             <tr><th>BID(売)</th><td><input type="number" name="sell_coinprice" v-model="sell_coinprice" /></td></tr>
                             <tr><th>STOP</th><td><input type="number" name="trigger_coinprice" v-model="trigger_coinprice" /></td></tr>

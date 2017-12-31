@@ -10,7 +10,7 @@ new Vue({
   computed: {
     buy_price: {
       get: function () {
-        return this.buy_coinprice * this.size
+        return parseInt(this.buy_coinprice) * parseFloat(this.size)
       },
       set: function (value) {
         //this.origin = Math.ceil(value / 1.08);
@@ -18,9 +18,7 @@ new Vue({
     },
     sell_price: {
       get: function () {
-        console.log(this.buy_price);
-        console.log(this.target_profit);
-        return this.buy_price + this.target_profit
+        return this.buy_price + parseInt(this.target_profit)
       },
       set: function (value) {
         //this.origin = Math.ceil(value / 1.08);
@@ -28,9 +26,7 @@ new Vue({
     },
     sell_coinprice: {
       get: function () {
-        console.log(this.sell_price);
-        console.log(this.size);
-        return this.sell_price / this.size
+        return this.sell_price / parseFloat(this.size)
       },
       set: function (value) {
         //this.origin = Math.ceil(value / 1.08);
@@ -38,7 +34,7 @@ new Vue({
     },  
     trigger_price: {
       get: function () {
-        return parseInt(this.buy_price + this.pnl_limit)
+        return this.buy_price + parseInt(this.pnl_limit)
       },
       set: function (value) {
         //this.origin = Math.ceil(value / 1.08);
@@ -46,7 +42,7 @@ new Vue({
     },  
     trigger_coinprice: {
       get: function () {
-        return parseInt(this.trigger_price / this.size)
+        return parseInt(this.trigger_price / parseFloat(this.size))
       },
       set: function (value) {
         //this.origin = Math.ceil(value / 1.08);
@@ -54,7 +50,7 @@ new Vue({
     }, 
     require_collateral: {
       get: function () {
-        return parseInt(this.buy_price / this.leverage)
+        return parseInt(this.buy_price / parseInt(this.leverage))
       },
       set: function (value) {
         //this.origin = Math.ceil(value / 1.08);

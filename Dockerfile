@@ -9,7 +9,6 @@ RUN apt-get update && \
                        mysql-client \
                        postgresql-client \
                        sqlite3 \
-                       npm \
                        --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 

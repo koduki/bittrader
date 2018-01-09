@@ -1,9 +1,9 @@
 new Vue({
-  el: '.trade-form',
+  el: '#trade-form',
   data: {
     pnl_limit: '-200',
     target_profit: '10',
-    size:'0.001',
+    size:'0.1',
     buy_coinprice:'1651250',
     leverage: 15
   },
@@ -13,7 +13,7 @@ new Vue({
         return parseInt(this.buy_coinprice) * parseFloat(this.size)
       },
       set: function (value) {
-        //this.origin = Math.ceil(value / 1.08);
+        this.buy_coinprice = parseInt(value / parseFloat(this.size))
       }
     },
     sell_price: {
@@ -21,41 +21,54 @@ new Vue({
         return this.buy_price + parseInt(this.target_profit)
       },
       set: function (value) {
-        //this.origin = Math.ceil(value / 1.08);
+        this.buy_price = value - parseInt(this.target_profit)
       }
     },
     sell_coinprice: {
       get: function () {
-        return this.sell_price / parseFloat(this.size)
+        return parseInt(this.sell_price / parseFloat(this.size))
       },
       set: function (value) {
-        //this.origin = Math.ceil(value / 1.08);
-      }
-    },  
-    trigger_price: {
-      get: function () {
-        return this.buy_price + parseInt(this.pnl_limit)
-      },
-      set: function (value) {
-        //this.origin = Math.ceil(value / 1.08);
-      }
-    },  
-    trigger_coinprice: {
-      get: function () {
-        return parseInt(this.trigger_price / parseFloat(this.size))
-      },
-      set: function (value) {
-        //this.origin = Math.ceil(value / 1.08);
+        this.sell_price = parseInt(value) * parseFloat(this.size)
       }
     }, 
-    require_collateral: {
+    trigger_price_ask: {
       get: function () {
-        return parseInt(this.buy_price / parseInt(this.leverage))
-      },
-      set: function (value) {
-        //this.origin = Math.ceil(value / 1.08);
+        return this.sell_price + parseInt(this.pnl_limit)
+      }
+    },  
+    trigger_coinprice_ask: {
+      get: function () {
+        return parseInt(this.trigger_price_ask / parseFloat(this.size))
+      }
+    }, 
+    trigger_price_bid: {
+      get: function () {
+        return this.buy_price + parseInt(this.pnl_limit)
+      }
+    },  
+    trigger_coinprice_bid: {
+      get: function () {
+        return parseInt(this.trigger_price_bid / parseFloat(this.size))
+      }
+    }, 
+    require_collateral_ask: {
+      get: function () {
+        return parseInt(this.sell_price / parseInt(this.leverage))
       }
     },
+    require_collateral_bid: {
+      get: function () {
+        return parseInt(this.buy_price / parseInt(this.leverage))
+      }
+    },
+  },
+  methods: {
+    submit: function (method) {
+      var form = document.getElementById('trade-form');
+      form.setAttribute('action', method);
+      form.submit();
+    }
   }
 });
 

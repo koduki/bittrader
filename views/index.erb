@@ -10,7 +10,7 @@
             <h1>ビットトレード</h1>
         </header>
         <div>
-            <form action="trade" method="POST">
+            <form id="trade-form" action="trade" method="POST">
                 <section>
                     APIキー : <input type="text" name="api_key" value="<%=@api_key%>"/>
                     APIシークレットキー : <input type="text" name="api_secret_key" value="<%=@api_secret_key%>"/>
@@ -24,24 +24,23 @@
                             <tr><th>レバレッジ</th><td><input type="text" name="leverage" value="<%=@leverage%>" /></td></tr>
                         <tbody>
                     </table>
-                    <div class="js-component08">
-                        <p>税抜価格 ： <input v-model="origin" type="number"></p>
-                        <p>税込価格 ： <input v-model="withTax" type="number"></p>
-                    </div>
                     <h1>トレード</h1>
-                    <table class="trade-form">
+                    <table>
                         <tbody>
                             <tr><th>許容損失(JPY)</th><td><input type="number" name="pnl_limit" v-model="pnl_limit" /></td></tr>
                             <tr><th>目標利益(JPY)</th><td><input type="number" name="target_profit" v-model="target_profit" /></td></tr>
                             <tr><th>コイン数</th><td><input type="number" name="size" step="0.001" v-model="size" /></td></tr>
                             <tr><th>ASK(買)</th><td><input type="number" name="buy_coinprice" v-model="buy_coinprice" /></td></tr>
                             <tr><th>BID(売)</th><td><input type="number" name="sell_coinprice" v-model="sell_coinprice" /></td></tr>
-                            <tr><th>STOP</th><td><input type="number" name="trigger_coinprice" v-model="trigger_coinprice" /></td></tr>
-                            <tr><th>必要証拠金</th><td><input type="number" name="require_collateral" v-model="require_collateral" /></td></tr>
+                            <tr><th>STOP(ASK)</th><td><input type="number" name="trigger_coinprice_ask" v-model="trigger_coinprice_ask" /></td></tr>
+                            <tr><th>STOP(BID)</th><td><input type="number" name="trigger_coinprice_bid" v-model="trigger_coinprice_bid" /></td></tr>
+                            <tr><th>必要証拠金(ASK)</th><td><input type="number" v-model="require_collateral_ask" /></td></tr>
+                            <tr><th>必要証拠金(BID)</th><td><input type="number" v-model="require_collateral_bid" /></td></tr>
                         <tbody>
                     </table>
                 </section>
-                <input type="submit" value="Buy"/>
+                <input type="button" value="ASK" v-on:click="submit('/ask')" />
+                <input type="button" value="BID" v-on:click="submit('/bid')" />
             </form>
             <section>
                 <h1>建玉一覧</h1>

@@ -15,7 +15,7 @@ get '/' do
     # Account
     @collateral = 1248
     @total_require_collateral = 663
-    @leverage = 3
+    @leverage = 15
 
     # Trade
     @pnl_limit = -100
@@ -32,7 +32,7 @@ get '/' do
     erb :index
 end
 
-post '/trade' do
+post '/ask' do
     flash[:api_key] = params[:api_key]
     flash[:api_secret_key] = params[:api_secret_key]
 

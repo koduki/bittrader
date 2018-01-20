@@ -10,3 +10,4 @@ gem "sinatra-activerecord", :require => "sinatra/activerecord"
 gem "rake"
 gem 'pg'
 gem "backports"
+gem 'pubnub', '~> 4.0.27'

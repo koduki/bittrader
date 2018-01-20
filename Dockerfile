@@ -13,7 +13,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 ADD ./Gemfile $APP_ROOT
-ADD ./Gemfile.lock $APP_ROOT
+#ADD ./Gemfile.lock $APP_ROOT
 
 RUN \
   echo 'gem: --no-document' >> ~/.gemrc && \
